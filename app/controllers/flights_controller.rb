@@ -12,6 +12,10 @@ class FlightsController < ApplicationController
   	redirect_to new_flight_path
   end
 
+  def show
+  	@flight = Flight.find(params[:id])
+  end
+
   private
 
   def flight_params
