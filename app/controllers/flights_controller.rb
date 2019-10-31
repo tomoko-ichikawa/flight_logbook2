@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-before_action :set_flight, only: [:show, :edit, :update]
+before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -27,6 +27,11 @@ before_action :set_flight, only: [:show, :edit, :update]
   	else
   		render 'edit'
   	end
+  end
+
+  def destroy
+    @flight.destroy
+    redirect_to flights_path, notice:"ログを削除しました"
   end
 
   private
