@@ -11,8 +11,12 @@ before_action :set_flight, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-  	Flight.create(flight_params)
-  	redirect_to new_flight_path
+    @flight = Flight.create(flight_params)
+    if @flight.save
+      redirect_to new_flight_path
+    else
+      render 'new'
+    end
   end
 
   def show
