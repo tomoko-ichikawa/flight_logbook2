@@ -7,7 +7,11 @@ before_action :set_flight, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-  	@flight = Flight.new
+    if params[:back]
+      @flight = Flight.new(flight_params)
+    else
+      @flight = Flight.new
+    end
   end
 
   def create
@@ -36,6 +40,10 @@ before_action :set_flight, only: [:show, :edit, :update, :destroy]
   def destroy
     @flight.destroy
     redirect_to flights_path, notice:"ログを削除しました"
+  end
+
+  def confirm
+    @flight = Flight.new(flight_params)
   end
 
   private
