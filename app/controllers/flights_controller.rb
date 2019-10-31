@@ -17,6 +17,7 @@ before_action :authenticate_user!, except:[:index]
 
   def create
     @flight = Flight.create(flight_params)
+    @flight.user_id = current_user.id
     if @flight.save
       redirect_to new_flight_path
     else
@@ -25,6 +26,7 @@ before_action :authenticate_user!, except:[:index]
   end
 
   def show
+    @user = @flight.user
   end
 
   def edit
