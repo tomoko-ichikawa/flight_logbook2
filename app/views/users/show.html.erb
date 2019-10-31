@@ -1,0 +1,9 @@
+<h1>ユーザー詳細</h1>
+
+<hr>
+
+<% @flights.each do |flight| %>
+<hr>
+<p><span>emai: </span><%= @user.email %></p>
+<p><span>投稿内容:</span><%= link_to flight, flight_path(fligth.id) %></p>
+<% end %>
